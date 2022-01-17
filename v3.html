@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+</head>
+<body>
+	
+	<h3>内部程序取注册码BATE版3.0</h3>
+	
+	
+	<p id="demo"></p>
+	<p id="demo2"></p>
+	<p id="demo3"></p>
+	<p id="demo4"></p>
+	<p id="demo5"></p>
+	<p id="demo6"></p>
+	<p id="demo7"></p>
+	<p id="demo8"></p>
+	<p id="demo9"></p>
+	<p id="demo10"></p>
+	<p id="demo11"></p>
+	<p id="demo12"></p>
+	
+	<input id="num" value="请输入机器码" />
+	<button id="on" onclick="test()">生成注册码</button>
+	
+	<p id="demo21"></p>
+	<p id="demo22"></p>
+	<p id="demo23"></p>
+	<p id="demo24"></p>
+	<p id="demo25"></p>
+	<p id="demo26"></p>
+	
+	
+	
+	<script>
+	var d = new Date();//现在日期
+	var i=14;//15号以后
+	do
+	{
+	i+=1;
+	//d2 = new Date(d.getFullYear(),d.getMonth(),i,1,1,1);  限制了年份
+	d2 = new Date(2022,d.getMonth(),i,1,1,1);
+	}
+	while (d2.getDay() != 1)//取出15后以后后星期1
+	
+	var 年=d2.getFullYear();
+	var 月=d2.getMonth()+1;//月返回是0-11
+	var 日=d2.getDate();
+	
+	var tem年=(年-2000) * 辗转相除(月 , 日);
+	var tem月 = 月 * 5;
+	var tem日 = 日 * 3;
+	var tem后缀 = ((月 + 日) % 2 ==0 ) ? 月 + 日-1 :月 + 日 +1;
+	
+	var 机器码 = tem年 * 100 * 100 * 100 + tem月 * 100 * 100 + tem日 * 100 + tem后缀
+	
+	/*
+	document.getElementById("demo").innerHTML = d2.getDay();
+	document.getElementById("demo2").innerHTML = 年;
+	document.getElementById("demo3").innerHTML = 月;
+	document.getElementById("demo4").innerHTML = 日;
+	document.getElementById("demo5").innerHTML = tem年;
+	document.getElementById("demo6").innerHTML = tem月;
+	document.getElementById("demo7").innerHTML = tem日;
+	document.getElementById("demo8").innerHTML = tem后缀;
+	document.getElementById("demo9").innerHTML = "机器码";
+	document.getElementById("demo10").innerHTML = 机器码;
+	*/
+	
+	
+	
+	
+	
+	
+	function 辗转相除(a, b) {
+		if (b != 0 )
+	    {return 辗转相除(b,a%b);}
+	    return a
+	}
+	
+	
+	function test() {
+		var num= document.getElementById("num").value; //取出输入的值
+	/*
+		document.getElementById("demo21").innerHTML = 机器码;
+		document.getElementById("demo22").innerHTML = num;
+		document.getElementById("demo23").innerHTML = "计算结果";
+	*/
+		var tem = num * 机器码;
+		var 注册码 = (tem % 2 ==0 ) ? tem -11111111 :tem +11111111;
+	//	document.getElementById("demo24").innerHTML = tem;
+	//	document.getElementById("demo24").innerHTML = d.getFullYear()+"/"+ (d.getMonth()+1) + "/" +d.getDate();
+		document.getElementById("demo25").innerHTML = "注册码";
+		document.getElementById("demo26").innerHTML = 注册码;
+	
+	
+	//检查更新日期
+	var d3 = new Date();//现在日期
+	var d4 = new Date(2023,2,1);//未来日期
+	if(d3 > d4) document.getElementById("demo26").innerHTML = "计算失败，请更新程序……";
+	
+	}
+	
+	
+	function useronfocus() {
+		var num= document.getElementById("num").value; //取出输入的值
+		if(num == "请输入机器码" ) {document.getElementById("num").value = "";}
+	}
+	
+	function useronblur() {
+		var num= document.getElementById("num").value; //取出输入的值
+		if(num == "" ) {document.getElementById("num").value = "请输入机器码";}
+	}
+	
+	</script>
+
+	
+	
+</body>
+</html>
