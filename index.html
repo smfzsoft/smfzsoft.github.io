@@ -12,8 +12,7 @@
 </head>
 <body>
 	
-	<h3>内部程序取注册码BATE版3.0</h3>
-	
+	<h3>内部程序取注册码BATE版6.7.4</h3>
 	
 	<p id="demo"></p>
 	<p id="demo2"></p>
@@ -28,7 +27,9 @@
 	<p id="demo11"></p>
 	<p id="demo12"></p>
 	
-	<input id="num" value="请输入机器码" />
+	
+	<input id="num" type="text" name="txt" value="请输入机器码" onfocus="useronfocus()" onblur="useronblur()" >
+	
 	<button id="on" onclick="test()">生成注册码</button>
 	
 	<p id="demo21"></p>
@@ -37,54 +38,38 @@
 	<p id="demo24"></p>
 	<p id="demo25"></p>
 	<p id="demo26"></p>
-	
-	
-	
+	<p id="demo27"></p>
+	<p id="demo28"></p>
+	<p id="demo29"></p>
 	<script>
 	var d = new Date();//现在日期
-	var i=14;//15号以后
-	do
-	{
-	i+=1;
-	//d2 = new Date(d.getFullYear(),d.getMonth(),i,1,1,1);  限制了年份
-	d2 = new Date(2022,d.getMonth(),i,1,1,1);
-	}
-	while (d2.getDay() != 1)//取出15后以后后星期1
 	
-	var 年=d2.getFullYear();
-	var 月=d2.getMonth()+1;//月返回是0-11
-	var 日=d2.getDate();
-	
-	var tem年=(年-2000) * 辗转相除(月 , 日);
-	var tem月 = 月 * 5;
-	var tem日 = 日 * 3;
-	var tem后缀 = ((月 + 日) % 2 ==0 ) ? 月 + 日-1 :月 + 日 +1;
-	
-	var 机器码 = tem年 * 100 * 100 * 100 + tem月 * 100 * 100 + tem日 * 100 + tem后缀
-	
-	/*
-	document.getElementById("demo").innerHTML = d2.getDay();
-	document.getElementById("demo2").innerHTML = 年;
-	document.getElementById("demo3").innerHTML = 月;
-	document.getElementById("demo4").innerHTML = 日;
-	document.getElementById("demo5").innerHTML = tem年;
-	document.getElementById("demo6").innerHTML = tem月;
-	document.getElementById("demo7").innerHTML = tem日;
-	document.getElementById("demo8").innerHTML = tem后缀;
-	document.getElementById("demo9").innerHTML = "机器码";
-	document.getElementById("demo10").innerHTML = 机器码;
-	*/
+	var 月=d.getMonth()+1;//月返回是0-11
+	var 机器码=0;
+	if(月 == 1 ) {机器码 = 40066817;}
+	else if(月 == 2 ) {机器码 = 45128424;}
+	else if(月 == 3 ) {机器码 = 46188423;}
+	else if(月 == 4 ) {机器码 = 44247221;}
+	else if(月 == 5 ) {机器码 = 43306422;}
+	else if(月 == 6 ){ 机器码 = 48368025;}
+	else if(月 == 7 ) {机器码 = 47427226;}
+	else if(月 == 8 ){ 机器码 = 45486024;}
+	else if(月 == 9 ){ 机器码 = 50547627;}
+	else if(月 == 10 ){ 机器码 = 49606828;}
+	else if(月 == 11 ) {机器码 = 54668431;}
+	else if (月 == 12 ) {机器码 = 53727632;}
 	
 	
-	
-	
-	
-	
-	function 辗转相除(a, b) {
-		if (b != 0 )
-	    {return 辗转相除(b,a%b);}
-	    return a
-	}
+	//document.getElementById("demo").innerHTML = d;
+	//document.getElementById("demo2").innerHTML = d.getMonth();
+	//document.getElementById("demo3").innerHTML = 月;
+	//document.getElementById("demo4").innerHTML = d.getMonth()+1;
+	//document.getElementById("demo5").innerHTML = tem年;
+	//document.getElementById("demo6").innerHTML = tem月;
+	//document.getElementById("demo7").innerHTML = tem日;
+	//document.getElementById("demo8").innerHTML = tem后缀;
+	//document.getElementById("demo9").innerHTML = "机器码";
+	//document.getElementById("demo10").innerHTML = 机器码;
 	
 	
 	function test() {
@@ -97,18 +82,17 @@
 		var tem = num * 机器码;
 		var 注册码 = (tem % 2 ==0 ) ? tem -11111111 :tem +11111111;
 	//	document.getElementById("demo24").innerHTML = tem;
-	//	document.getElementById("demo24").innerHTML = d.getFullYear()+"/"+ (d.getMonth()+1) + "/" +d.getDate();
 		document.getElementById("demo25").innerHTML = "注册码";
 		document.getElementById("demo26").innerHTML = 注册码;
-	
-	
+	//	document.getElementById("demo27").innerHTML = 机器码;
+	//	document.getElementById("demo28").innerHTML = 月;
+	//	document.getElementById("demo29").innerHTML = d;
 	//检查更新日期
 	var d3 = new Date();//现在日期
-	var d4 = new Date(2023,2,1);//未来日期
+	var d4 = new Date(2023,2,10);//未来日期
 	if(d3 > d4) document.getElementById("demo26").innerHTML = "计算失败，请更新程序……";
 	
 	}
-	
 	
 	function useronfocus() {
 		var num= document.getElementById("num").value; //取出输入的值
@@ -119,6 +103,7 @@
 		var num= document.getElementById("num").value; //取出输入的值
 		if(num == "" ) {document.getElementById("num").value = "请输入机器码";}
 	}
+	
 	
 	</script>
 
