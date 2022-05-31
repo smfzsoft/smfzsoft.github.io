@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+</head>
+<body>
+	
+	<h3>&nbsp;内部程序取注册码二维码版6.7.5</h3>
+	
+	<p id="demo"></p>
+	<p id="demo2"></p>
+	<p id="demo3"></p>
+	<p id="demo4"></p>
+	<p id="demo5"></p>
+	<p id="demo6"></p>
+	<p id="demo7"></p>
+	<p id="demo8"></p>
+	<p id="demo9"></p>
+	<p id="demo10"></p>
+	<p id="demo11"></p>
+	<p id="demo12"></p>
+
+
+	<p id="demo21"></p>
+	<p id="demo22"></p>
+	<p id="demo23"></p>
+	<p id="demo24"></p>
+	<p id="demo25"></p>
+	<p id="demo26"></p>
+	<p id="demo27"></p>
+	<p id="demo28"></p>
+	<p id="demo29"></p>
+	
+	<script>
+	
+	var d = new Date();//现在日期
+	var 月=d.getMonth()+1;//月返回是0-11
+	var 机器码=0;
+	if(月 == 1 ) {机器码 = 40066817;}
+	else if(月 == 2 ) {机器码 = 45128424;}
+	else if(月 == 3 ) {机器码 = 46188423;}
+	else if(月 == 4 ) {机器码 = 44247221;}
+	else if(月 == 5 ) {机器码 = 43306422;}
+	else if(月 == 6 ) {机器码 = 48368025;}
+	else if(月 == 7 ) {机器码 = 47427226;}
+	else if(月 == 8 ) {机器码 = 45486024;}
+	else if(月 == 9 ) {机器码 = 50547627;}
+	else if(月 == 10 ) {机器码 = 49606828;}
+	else if(月 == 11 ) {机器码 = 54668431;}
+	else if (月 == 12 ) {机器码 = 53727632;}
+	
+	test2();
+	
+	//document.getElementById("demo").innerHTML = d;
+	//document.getElementById("demo2").innerHTML = d.getMonth();
+	//document.getElementById("demo3").innerHTML = 月;
+	//document.getElementById("demo4").innerHTML = d.getMonth()+1;
+	//document.getElementById("demo5").innerHTML = tem年;
+	//document.getElementById("demo6").innerHTML = tem月;
+	//document.getElementById("demo7").innerHTML = tem日;
+	//document.getElementById("demo8").innerHTML = tem后缀;
+	//document.getElementById("demo9").innerHTML = "机器码";
+	//document.getElementById("demo10").innerHTML = 机器码;
+	
+	
+	function test() {
+		var num= document.getElementById("num").value; //取出输入的值
+	/*
+		document.getElementById("demo21").innerHTML = 机器码;
+		document.getElementById("demo22").innerHTML = num;
+		document.getElementById("demo23").innerHTML = "计算结果";
+	*/
+		var tem = num * 机器码;
+		var 注册码 = (tem % 2 ==0 ) ? tem -11111111 :tem +11111111;
+	//	document.getElementById("demo24").innerHTML = tem;
+		document.getElementById("demo25").innerHTML = "注册码";
+		document.getElementById("demo26").innerHTML = 注册码;
+	//	document.getElementById("demo27").innerHTML = 机器码;
+	//	document.getElementById("demo28").innerHTML = 月;
+	//	document.getElementById("demo29").innerHTML = d;
+	//检查更新日期
+	var d3 = new Date();//现在日期
+	var d4 = new Date(2023,2,10);//未来日期
+	if(d3 > d4) document.getElementById("demo26").innerHTML = "计算失败，请更新程序……";
+	
+	}
+	
+	function useronfocus() {
+		var num= document.getElementById("num").value; //取出输入的值
+		if(num == "请输入机器码" ) {document.getElementById("num").value = "";}
+	}
+	
+	function useronblur() {
+		var num= document.getElementById("num").value; //取出输入的值
+		if(num == "" ) {document.getElementById("num").value = "请输入机器码";}
+	}
+	
+	function GetQueryString(name) {
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+				if(r != null) return decodeURI(r[2]);
+				return null;
+			}
+	
+	function test2() {
+		var num= GetQueryString("num"); //取出输入的值
+	
+		document.getElementById("demo21").innerHTML ="&nbsp;&nbsp;&nbsp;&nbsp;机器码：";
+		document.getElementById("demo22").innerHTML ="&nbsp;&nbsp;&nbsp;&nbsp;"+ num;
+	//	document.getElementById("demo23").innerHTML = "计算结果";
+	
+		var tem = num * 机器码;
+		var 注册码 = (tem % 2 ==0 ) ? tem -11111111 :tem +11111111;
+	//	document.getElementById("demo24").innerHTML = tem;
+		document.getElementById("demo25").innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;注册码：";
+		document.getElementById("demo26").innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;"+注册码;
+	//	document.getElementById("demo27").innerHTML = 机器码;
+	//	document.getElementById("demo28").innerHTML = 月;
+	//	document.getElementById("demo29").innerHTML = d;
+	//检查更新日期
+	var d3 = new Date();//现在日期
+	var d4 = new Date(2023,2,10);//未来日期
+	if(d3 > d4) document.getElementById("demo26").innerHTML = "计算失败，请更新程序……";
+	
+	}
+	
+	</script>
+
+	
+	
+</body>
+</html>
